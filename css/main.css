@@ -108,3 +108,9 @@ menu {
     color: blue;
     
 }
+
+.mainGit:hover {
+    box-shadow: 0 3px 5px #000;
+    border-radius: 50%;
+    transition: all 0.3s
+}
