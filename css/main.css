@@ -98,3 +98,13 @@ menu {
         right 0.3s linear, 
         visibility 0.9s linear /*скрывает меню и задержка */;
 }
+
+
+.mainGit {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    font-size: 18px;
+    color: blue;
+    
+}
