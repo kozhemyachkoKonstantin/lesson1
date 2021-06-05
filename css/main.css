@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /*убрать горизонтальный  скролл*/
+}
+
+.header {
+    position: relative;
+}
+.burger-menu {
+    z-index: 0;
+}
+
+.burger-menu, input[type = checkbox] { /*input[type = checkbox] - доп. свойство, чтобы скрыть checkbox*/
+    height: 50px;
+    width: 50px;
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.burger-menu span {
+    width: 100%;
+    height: 8px;    
+    background: #000;
+
+    position: absolute;
+}
+
+.burger-menu span:nth-child(1) {
+    top: 5px;
+}
+.burger-menu span:nth-child(2) {
+    top: 20px;
+}
+.burger-menu span:nth-child(3) {
+    top: 35px;
+}
+
+input[type = checkbox]{
+    opacity: 0;
+    z-index: 3;
+}
+input[type = checkbox]:checked ~ .burger-menu{ /*включенное состояние checkbox - меню открыто*/
+    z-index: 2;
+}
+.burger-menu span {
+    transition:
+        /* background-color 0.2s linear плавно изменяется цвет бургера,*/ 
+        transform 0.3s linear /*плавное превращение крестика*/;
+}
+input[type = checkbox]:checked ~ .burger-menu span { /*включенное состояние checkbox - меню открыто*/
+    background-color: #fff;
+}
+
+/*делаем крестик из бургера*/
+input[type = checkbox]:checked ~ .burger-menu span:nth-child(1) { /*включенное состояние checkbox - меню открыто*/
+    transform: rotate(45deg); /*поворот линии бургера*/
+    top: 16px; /*позиционироание при изменении угла*/
+
+}
+input[type = checkbox]:checked ~ .burger-menu span:nth-child(2) { /*включенное состояние checkbox - меню открыто*/
+    transform: rotate(-45deg); /*поворот линии бургера*/
+    top: 16px; /*позиционироание при изменении угла*/
+}
+input[type = checkbox]:checked ~ .burger-menu span:nth-child(3) { /*включенное состояние checkbox - меню открыто*/
+    visibility: hidden; /*делает элемент невидимым, но сохраняет его в структуре страницы в отличае от display:none */
+}
+
+input[type = checkbox]:checked ~ menu { /*при включенном состоянии checkbox применяем свойства к menu*/
+    visibility: visible; /*делает элемент видимым*/
+    right: 0;
+
+}
+menu {
+    z-index: 1;
+    display: grid;
+    row-gap: 20px;
+    align-content:flex-start;
+    justify-content: start;
+    padding: 100px 0px 0px 15px;
+    width: 25vw;
+    height: 100vh;
+    position: absolute;
+    background-color: cadetblue;
+    right: -20vw; /*- 20% от ширины браузера*/
+    color:#fff;
+    font-size: 20px;
+    visibility: hidden; /*делает элемент невидимым, но сохраняет его в структуре страницы в отличае от display:none */
+    list-style: none;
+    transition: 
+        right 0.3s linear, 
+        visibility 0.9s linear /*скрывает меню и задержка */;
+}
